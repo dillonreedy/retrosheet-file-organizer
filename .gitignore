@@ -1,0 +1,5 @@
+retrosheet/
+node_modules/
+package-lock.json
+.env
+src/retrosheet-data-by-year/
