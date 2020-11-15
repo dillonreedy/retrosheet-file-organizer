@@ -1,0 +1,162 @@
+3 kinds of files:
+1. EVL - full play by play event files
+2. EBL - file with batting, pitching, and fielding totals for each player used to create the box score
+3. EDL - Deduced files from newspapers
+
+
+Note, these instructions look like they come from 2012, thus since then they've updated to put it all in one file.
+
+It looks like today he puts all American League team event files in to "EVA" and all National League files in to "EVN".
+
+Record types are always in the first column:
+id, version, info, start, play, com, sub, data
+
+id - unique game id - <Home Team><Date Of Game>
+version - obsolete
+info - 
+
+record-type
+
+id,ANA201904050
+version,2
+info,visteam,TEX
+info,hometeam,ANA
+info,site,ANA01
+info,date,2019/04/05
+info,number,0
+info,starttime,7:09PM
+info,daynight,night
+info,usedh,true
+info,umphome,vanol901
+info,ump1b,marqa901
+info,ump2b,belld901
+info,ump3b,rackd901
+info,howscored,park
+info,pitches,pitches
+info,oscorer,munse701
+info,temp,63
+info,winddir,rtol
+info,windspeed,8
+info,fieldcond,unknown
+info,precip,unknown
+info,sky,cloudy
+info,timeofgame,172
+info,attendance,41089
+info,wp,andej005
+info,lp,lynnl001
+info,save,allec002
+start,choos001,"Shin-Soo Choo",0,1,9
+start,odorr001,"Rougned Odor",0,2,4
+start,andre001,"Elvis Andrus",0,3,6
+start,mazan001,"Nomar Mazara",0,4,10
+start,gallj002,"Joey Gallo",0,5,7
+start,cabra002,"Asdrubal Cabrera",0,6,5
+start,guzmr001,"Ronald Guzman",0,7,3
+start,mathj001,"Jeff Mathis",0,8,2
+start,deshd002,"Delino DeShields",0,9,8
+start,lynnl001,"Lance Lynn",0,0,1
+start,calhk001,"Kole Calhoun",1,1,9
+start,troum001,"Mike Trout",1,2,8
+start,bourj002,"Justin Bour",1,3,3
+start,pujoa001,"Albert Pujols",1,4,10
+start,lucrj001,"Jonathan Lucroy",1,5,2
+start,lastt001,"Tommy La Stella",1,6,4
+start,cozaz001,"Zack Cozart",1,7,5
+start,goodb001,"Brian Goodwin",1,8,7
+start,fletd002,"David Fletcher",1,9,6
+start,penaf002,"Felix Pena",1,0,1
+play,1,0,choos001,02,CSS,K
+play,1,0,odorr001,12,CBCX,D9/L+
+play,1,0,andre001,21,*BBFX,S8/L+.2-3
+play,1,0,mazan001,02,CSS,K+SB2
+play,1,0,gallj002,22,B*BSSS,K
+play,1,1,calhk001,12,SCBS,K
+play,1,1,troum001,32,BBFBCFX,9/F
+play,1,1,bourj002,21,CBBX,7/L
+play,2,0,cabra002,32,CBFBBB,W
+play,2,0,guzmr001,12,BCCFX,36(1)3/GDP
+play,2,0,mathj001,02,CCS,K
+play,2,1,pujoa001,11,CBX,53/G
+play,2,1,lucrj001,32,CCBBBX,53/G
+play,2,1,lastt001,10,BX,3/G
+play,3,0,deshd002,32,BFBBCB,W
+play,3,0,choos001,22,1C1BBS1X,8/F
+play,3,0,odorr001,01,1SB,SB2
+com,"$Rangers challenged call that DeShields was out at 2nd;"
+com,"call was overturned - stolen base"
+play,3,0,odorr001,32,1SB.F*BBFFX,163/G+.2-3
+com,"Injury Delay"
+play,3,0,andre001,12,CBSX,7/L
+play,3,1,cozaz001,02,FSC,K
+play,3,1,goodb001,22,BCFBX,D8/L+
+play,3,1,fletd002,11,CBX,S5/G-.2-3
+play,3,1,calhk001,01,FX,S9/L.3-H;1-2
+play,3,1,troum001,21,BCBX,4(1)3/GDP
+play,4,0,mazan001,32,BBBCFFFFT,K
+play,4,0,gallj002,11,CBX,HR/89/F
+play,4,0,cabra002,22,BCSBC,K
+play,4,0,guzmr001,32,BBCFBFX,7/F+
+play,4,1,bourj002,31,BBBCB,W
+play,4,1,pujoa001,22,CBBCX,S9/G.1-2
+play,4,1,lucrj001,32,BBCCBC,K
+play,4,1,lastt001,31,BBBCX,7/F
+play,4,1,cozaz001,10,*BX,8/F
+play,5,0,mathj001,12,CBCC,K
+play,5,0,deshd002,10,BX,9/L
+play,5,0,choos001,12,SBFX,S8/G
+com,"Mound Visit"
+com,"Mound Visit"
+play,5,0,odorr001,00,,NP
+sub,andej005,"Justin Anderson",1,0,1
+play,5,0,odorr001,22,.BBSFFB,WP.1-2
+play,5,0,odorr001,32,.BBSFFB.S,K
+play,5,1,goodb001,22,BBSCC,K
+play,5,1,fletd002,12,CBCX,53/G
+play,5,1,calhk001,01,CX,3/G
+play,6,0,andre001,22,BCFBX,8/F
+play,6,0,mazan001,32,BBFCBX,3/G
+play,6,0,gallj002,31,BFBBB,W
+play,6,0,cabra002,20,BB1X,5/P
+play,6,1,troum001,20,BBX,HR/8/F
+play,6,1,bourj002,22,BSFBFC,K
+play,6,1,pujoa001,01,CX,5/P5F
+play,6,1,lucrj001,32,BBFFFFBFX,1/L-
+play,7,0,guzmr001,00,,NP
+sub,roblh001,"Hansel Robles",1,0,1
+play,7,0,guzmr001,22,.SBBSFFS,K
+play,7,0,mathj001,22,BBSCC,K
+play,7,0,deshd002,00,X,S1/BG.B-3(E1/TH)(E9/TH)
+play,7,0,choos001,00,X,7/F
+play,7,1,lastt001,01,CX,7/F
+play,7,1,cozaz001,11,CBX,8/L
+play,7,1,goodb001,02,FSX,7/F
+play,8,0,odorr001,00,,NP
+sub,bourp001,"Peter Bourjos",1,8,7
+play,8,0,odorr001,00,,NP
+sub,buttt001,"Ty Buttrey",1,0,1
+play,8,0,odorr001,12,..CBSS,K
+play,8,0,andre001,31,BBBCX,S8/G
+play,8,0,mazan001,11,*BF1X,343/G+.1-2
+com,"$Angels challenged call that Mazara was safe at 1st; call"
+com,"Was overturned - ground out"
+play,8,0,gallj002,02,FFS,K
+play,8,1,fletd002,00,,NP
+sub,chavj001,"Jesse Chavez",0,0,1
+play,8,1,fletd002,11,.CBX,43/G
+play,8,1,calhk001,12,SBCC,K
+play,8,1,troum001,31,BFBBX,HR/89/F
+play,8,1,bourj002,02,CSC,K
+play,9,0,cabra002,00,,NP
+sub,allec002,"Cody Allen",1,0,1
+play,9,0,cabra002,00,.X,8/L
+play,9,0,guzmr001,22,CBCBX,8/F+
+play,9,0,mathj001,00,,NP
+sub,pench001,"Hunter Pence",0,8,11
+play,9,0,pench001,12,.CBSX,53/G-
+data,er,lynnl001,2
+data,er,chavj001,1
+data,er,penaf002,1
+data,er,andej005,0
+data,er,roblh001,0
+data,er,buttt001,0
+data,er,allec002,0

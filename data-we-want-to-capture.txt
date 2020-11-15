@@ -1,0 +1,152 @@
+
+*********************************************************************************
+ID RECORD TYPE
+*********************************************************************************
+id,ANA201904050
+
+*********************************************************************************
+INFO RECORD TYPE - Up to 34 record types
+*********************************************************************************
+info,visteam,TEX        - The visiting team
+info,hometeam,ANA       - The home team
+info,site,ANA01         - The location
+info,date,2019/04/05    - The date of the game
+info,number,0           - First, second, or third game of the day
+info,starttime,7:09PM   - Start time of the game, localized
+info,daynight,night     - Day or night?
+info,usedh,true         - Designated hitters used?
+info,umphome,vanol901   - Home umpire
+info,ump1b,marqa901     - 1st base umpire
+info,ump2b,belld901     - 2nd base umpire
+info,ump3b,rackd901     - 3rd base umpire
+info,pitches,pitches    - The presence or absence of pitch information. For some games, the ball-strike counts of the plays are shown, but no pitch detail is provided. (Possible values: pitches, counts, or none)
+info,timeofgame,172     - duration of game
+
+
+*********************************************************************************
+START AND SUB RECORD TYPE - The sub record is used when a player is replaced in a game
+*********************************************************************************
+start,choos001,"Shin-Soo Choo",0,1,9    - PlayerID, Player Name, Home/Visitor, Batting order position, fielding position
+
+*********************************************************************************
+PLAY RECORD TYPE - The sub record is used when a player is replaced in a game
+*********************************************************************************
+play,1,0,choos001,02,CSS,K  - The inning, home/away, Player ID of player at plate, Count when this play occurred or ??, Variable length history of pitches can be empty, play or event that occurred, 
+
+*********************************************************************************
+BADJ - This record is used to mark a plate appearance in which the batter bats from the side that is not expected ("badj" means "batting adjustment"). The syntax is:
+*********************************************************************************
+badj,playerid,hand
+
+*********************************************************************************
+PADJ - This record covers the very rare case in which a pitcher pitches to a batter with the hand opposite the one listed in the roster file. To date this has only happened once, when Greg Harris of the Expos, a right-hander, pitched left-handed to two Cincinnati
+*********************************************************************************
+pitching adjustment
+
+*********************************************************************************
+DATA - Data records appear after all play records from the game. 
+*********************************************************************************
+data,er,lynnl001,2 - earned run, pitcher player id, number of earned runs allowed
+
+
+
+*********************************************************************************
+Fifth Field of PLAY field
+*********************************************************************************
+    +  following pickoff throw by the catcher
+    *  indicates the following pitch was blocked by the catcher
+    .  marker for play not involving the batter
+    1  pickoff throw to first
+    2  pickoff throw to second
+    3  pickoff throw to third
+    >  Indicates a runner going on the pitch
+
+    B  ball
+    C  called strike
+    F  foul
+    H  hit batter
+    I  intentional ball
+    K  strike (unknown type)
+    L  foul bunt
+    M  missed bunt attempt
+    N  no pitch (on balks and interference calls)
+    O  foul tip on bunt
+    P  pitchout
+    Q  swinging on pitchout
+    R  foul ball on pitchout
+    S  swinging strike
+    T  foul tip
+    U  unknown or missed pitch
+    V  called ball because pitcher went to his mouth
+    X  ball put into play by batter
+    Y  ball put into play on pitchout
+
+*********************************************************************************
+Sixth Field of PLAY field
+*********************************************************************************
+
+Describes the play that occurred
+Broken down in to 3 parts
+1. Description of the basic play
+2. A modifier of the first part, and is seperated by a "/", there can be more than one modifier
+3. Describes the advance of any runners, seperated by a period, a successful advance is indicated by a dash, an out made is indicated by an X
+
+*********************************************************************************
+Hit Location Modifier
+*********************************************************************************
+While most Retrosheet game event files do not have them, hit location codes are included in some. 
+The system, which is the same that was used by Project Scoresheet and the Baseball Workshop, appends 
+the hit location to the description of the play. For example "S8/L8S" means a single played by the center 
+fielder that was a line drive (L) landing in short center (8S). The play "7/F78D" is a fly ball caught 
+by the left fielder in deep left center. The diagram below shows the hit location codes and contains 
+additional examples.
+
+Link can be found here: https://www.retrosheet.org/location.htm
+
+*********************************************************************************
+MODIFIERS
+*********************************************************************************
+AP    appeal play
+BP    pop up bunt
+BG    ground ball bunt
+BGDP  bunt grounded into double play
+BINT  batter interference
+BL    line drive bunt
+BOOT  batting out of turn
+BP    bunt pop up
+BPDP  bunt popped into double play
+BR    runner hit by batted ball
+C     called third strike
+COUB  courtesy batter
+COUF  courtesy fielder
+COUR  courtesy runner
+DP    unspecified double play
+E$    error on $
+F     fly
+FDP   fly ball double play
+FINT  fan interference
+FL    foul
+FO    force out
+G     ground ball
+GDP   ground ball double play
+GTP   ground ball triple play
+IF    infield fly rule
+INT   interference
+IPHR  inside the park home run
+L     line drive
+LDP   lined into double play
+LTP   lined into triple play
+MREV  manager challenge of call on the field
+NDP   no double play credited for this play
+OBS   obstruction (fielder obstructing a runner)
+P     pop fly
+PASS  a runner passed another runner and was called out
+R$    relay throw from the initial fielder to $ with no out made
+RINT  runner interference
+SF    sacrifice fly
+SH    sacrifice hit (bunt)
+TH    throw
+TH%   throw to base %
+TP    unspecified triple play
+UINT  umpire interference
+UREV  umpire review of call on the field
