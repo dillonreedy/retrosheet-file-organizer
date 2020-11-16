@@ -17,6 +17,12 @@ const clearFolder = (specifiedPath) => {
     }
 }
 
+const moveFile = (oldFilePath, newFilePath) => {
+    fs.rename(oldFilePath, newFilePath, (err) => {
+        if (err) console.log(err);
+    });
+}
+
 const makeDirectory = (specifiedPath) => {
     if (!fs.existsSync(specifiedPath)){
         fs.mkdirSync(specifiedPath);
@@ -53,5 +59,6 @@ const writeToFile = (data, fileName = `${Date.now().toString()}result`, fileExte
 module.exports = {
     clearFolder,
     makeDirectory,
+    moveFile,
     writeToFile
 }

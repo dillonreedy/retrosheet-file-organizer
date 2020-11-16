@@ -1,39 +1,55 @@
 
 
+const { match } = require('assert');
 const fs = require('fs');
 const path = require('path');
 const fileHandler = require('./fileHandler.js');
 
-let oldDirName = './retrosheet/event/regular'
-let newDirName = './retrosheet-data-by-year'
+let resultsDirName = '../retrosheet-data-by-year'
 
+// TODO:
+// Put gamelog .txt file in to the root folder
 
-fs.readdir(oldDirName, (err, files) => {
-    fileHandler.clearFolder();
-    if (err) {
-        console.log(err);
-        return;
-    } 
+function fillFolder(oldDirName) {
+    const eventExtensions = ['.EVN', '.EVA', '.EDN', '.EDA', '.EBA', '.EBN', '.EBF'];
 
-    for (let i = 1871; i < 2020; i++)
-    {
-        const curYearStr = i.toString();
+    fs.readdir(oldDirName, (err, files) => {
 
         files.forEach((fileName) => {
-            if (fileName.includes(curYearStr))
+            let matches = fileName.match(/\d{4}/);
+
+            if (matches !== undefined && matches !== null)
             {
-                const oldDir = path.join('C:/Dillon_Repos/retrosheet-data-miner', oldDirName, fileName);
-                const newDirFile = path.join(__dirname, newDirName, curYearStr, 'events', fileName);
-
-                fileHandler.makeDirectory(path.join(__dirname, newDirName));
-                fileHandler.makeDirectory(path.join(__dirname, newDirName, curYearStr));
-                fileHandler.makeDirectory(path.join(__dirname, newDirName, curYearStr, 'events'));
-
-
-                fs.rename(oldDir, newDirFile, (err) => {
-                    if (err) console.log(err);
-                });
+                const curYearStr = matches['0'];
+                const oldDir = path.resolve(oldDirName, fileName);
+                console.log(oldDir);
+                const extName = path.extname(fileName);
+        
+                fileHandler.makeDirectory(path.resolve(resultsDirName)); // Creates result folder
+                fileHandler.makeDirectory(path.resolve(resultsDirName, curYearStr)); // Creates year folder
+        
+                if (extName === '' || extName === '.txt')
+                {
+                    fileHandler.moveFile(oldDir, path.resolve(resultsDirName, curYearStr, fileName)); // Moves TEAM file or gameolog.txt file into the root
+                }
+                else if (eventExtensions.indexOf(extName) > -1)
+                {
+                    fileHandler.makeDirectory(path.resolve(resultsDirName, curYearStr, 'events')); // Creates events folder in year folder
+        
+                    fileHandler.moveFile(oldDir, path.resolve(resultsDirName, curYearStr, 'events', fileName));
+                }
+                else if (extName === '.ROS')
+                {
+                    fileHandler.makeDirectory(path.resolve(resultsDirName, curYearStr, 'rosters')); // Creates rosters folder in year folder
+        
+                    fileHandler.moveFile(oldDir, path.resolve(resultsDirName, curYearStr, 'rosters', fileName));
+                }
             }
+
         });
-    }
-})
+    })
+}
+
+
+fillFolder(path.resolve('./retrosheet/event/regular'));
+fillFolder(path.resolve('./retrosheet/gamelog'));
